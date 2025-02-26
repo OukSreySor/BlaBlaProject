@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:week_3_blabla_project/dummy_data/dummy_data.dart';
 import 'package:week_3_blabla_project/model/ride/ride.dart';
+import 'package:week_3_blabla_project/screens/ride_pref/ride_pref_screen.dart';
+import 'package:week_3_blabla_project/screens/test/test_button_screen.dart';
 import 'theme/theme.dart';
 
 void main() {
@@ -16,7 +18,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: appTheme,
       //home: Scaffold(body: RidePrefScreen()),
-      home: AvailableRides()
+      //home: AvailableRides()
+      home: TestButtonScreen()
     );
   }
 }
