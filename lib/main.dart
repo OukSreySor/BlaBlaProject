@@ -4,6 +4,7 @@ import 'package:week_3_blabla_project/model/ride/ride.dart';
 import 'package:week_3_blabla_project/screens/ride_pref/ride_pref_screen.dart';
 import 'package:week_3_blabla_project/screens/ride_pref/widgets/ride_pref_form.dart';
 import 'package:week_3_blabla_project/screens/test/test_button_screen.dart';
+import 'package:week_3_blabla_project/widgets/inputs/bla_location_picker.dart';
 import 'theme/theme.dart';
 
 void main() {
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
       //home: Scaffold(body: RidePrefScreen()),
       //home: AvailableRides()
       //home: TestButtonScreen()
-      home: Scaffold(body: RidePrefForm())
+      //home: Scaffold(body: RidePrefForm())
+      home: Scaffold(body: BlaLocationPicker(locations: fakeLocations)),
     );
   }
 }
