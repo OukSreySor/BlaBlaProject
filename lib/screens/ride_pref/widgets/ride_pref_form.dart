@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:week_3_blabla_project/theme/theme.dart';
 import 'package:week_3_blabla_project/utils/date_time_util.dart';
 import 'package:week_3_blabla_project/widgets/actions/bla_button.dart';
+import 'package:week_3_blabla_project/widgets/display/bla_divider.dart';
+import 'package:week_3_blabla_project/widgets/display/bla_text_field.dart';
  
 import '../../../model/ride/locations.dart';
 import '../../../model/ride_pref/ride_pref.dart';
@@ -31,10 +33,6 @@ class _RidePrefFormState extends State<RidePrefForm> {
   Location? arrival;
   late int requestedSeats;
 
-  final TextEditingController _departureController = TextEditingController();
-  final TextEditingController _arrivalController = TextEditingController();
-  final TextEditingController _dateController = TextEditingController();
-
 
   // ----------------------------------
   // Initialize the Form attributes
@@ -49,9 +47,6 @@ class _RidePrefFormState extends State<RidePrefForm> {
       departureDate = widget.initRidePref?.departureDate ?? DateTime.now();
       requestedSeats = widget.initRidePref?.requestedSeats ?? 1;
 
-      _departureController.text = departure?.name ?? '';
-      _arrivalController.text = arrival?.name ?? '';
-      _dateController.text = DateTimeUtils.formatDateTime(departureDate);
     } else {
       departureDate = DateTime.now();
       requestedSeats = 1;
@@ -68,9 +63,6 @@ class _RidePrefFormState extends State<RidePrefForm> {
       Location? temp = departure;
       departure = arrival;
       arrival = temp;
-
-      _departureController.text = departure?.name ?? '';
-      _arrivalController.text = arrival?.name ?? '';
     });
   }
 
@@ -100,13 +92,9 @@ class _RidePrefFormState extends State<RidePrefForm> {
                 children: [
                   Stack(
                     children: [ 
-                      TextFormField(
-                        controller: _departureController,
-                        decoration: InputDecoration(
-                          hintText: 'Leaving from',
-                          border: UnderlineInputBorder(),  
-                          prefixIcon: const Icon(Icons.location_on),  
-                        ),
+                      BlaTextField(
+                        label: 'Leaving from', 
+                        icon: Icons.location_on,
                       ),
                       Positioned(
                         right: 0,
@@ -118,38 +106,28 @@ class _RidePrefFormState extends State<RidePrefForm> {
                         ),
                       ),
                     ] 
+                  ), 
+                  SizedBox(height: BlaSpacings.m),
+                  BlaDivider(),
+                  SizedBox(height: BlaSpacings.m),
+                  BlaTextField(
+                    label: 'Going to', 
+                    icon: Icons.location_on,
                   ),
                   SizedBox(height: BlaSpacings.m),
-                  TextFormField(
-                    controller: _arrivalController,
-                    decoration: InputDecoration(
-                      hintText: 'Goint to',
-                      border: UnderlineInputBorder(),  
-                      prefixIcon: const Icon(Icons.location_on),
-                    ),
-                    
+                  BlaDivider(),
+                  SizedBox(height: BlaSpacings.m),
+                  BlaTextField(
+                    label: DateTimeUtils.formatDateTime(departureDate), 
+                    icon: Icons.calendar_today,
                   ),
                   SizedBox(height: BlaSpacings.m),
-                  TextFormField(
-                    controller: _dateController,
-                    decoration: InputDecoration(
-                      hintText: 'Departure Date',
-                      border: UnderlineInputBorder(),  
-                      prefixIcon: const Icon(Icons.calendar_today),  
-                    ),
-                    
-                  ),
+                  BlaDivider(),
                   SizedBox(height: BlaSpacings.m),
-                  TextFormField(
-                    controller: _dateController,
-                    decoration: InputDecoration(
-                      hintText: '1',
-                      border: InputBorder.none,  
-                      prefixIcon: const Icon(Icons.person),  
-                    ),
-                    
+                  BlaTextField(
+                    label: '$requestedSeats', 
+                    icon: Icons.person,
                   ),
-                  
                   SizedBox(height: BlaSpacings.m),
                   BlaButton(
                     text: 'Search',
