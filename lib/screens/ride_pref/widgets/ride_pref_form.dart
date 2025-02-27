@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:week_3_blabla_project/dummy_data/dummy_data.dart';
 import 'package:week_3_blabla_project/theme/theme.dart';
+import 'package:week_3_blabla_project/utils/animations_util.dart';
 import 'package:week_3_blabla_project/utils/date_time_util.dart';
 import 'package:week_3_blabla_project/widgets/actions/bla_button.dart';
 import 'package:week_3_blabla_project/widgets/display/bla_divider.dart';
 import 'package:week_3_blabla_project/widgets/display/bla_text_field.dart';
+import 'package:week_3_blabla_project/widgets/inputs/bla_location_picker.dart';
  
 import '../../../model/ride/locations.dart';
 import '../../../model/ride_pref/ride_pref.dart';
@@ -66,6 +69,12 @@ class _RidePrefFormState extends State<RidePrefForm> {
     });
   }
 
+  void _openLocationPicker() {
+    Navigator.of(context).push(
+      AnimationUtils.createBottomToTopRoute(BlaLocationPicker(locations: fakeLocations))
+    );
+  }
+
   // ----------------------------------
   // Compute the widgets rendering
   // ----------------------------------
@@ -95,6 +104,7 @@ class _RidePrefFormState extends State<RidePrefForm> {
                       BlaTextField(
                         label: 'Leaving from', 
                         icon: Icons.location_on,
+                        onTap: _openLocationPicker,
                       ),
                       Positioned(
                         right: 0,
@@ -113,6 +123,7 @@ class _RidePrefFormState extends State<RidePrefForm> {
                   BlaTextField(
                     label: 'Going to', 
                     icon: Icons.location_on,
+                    onTap: _openLocationPicker,
                   ),
                   SizedBox(height: BlaSpacings.m),
                   BlaDivider(),

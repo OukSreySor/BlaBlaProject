@@ -22,61 +22,63 @@ class _BlaLocationPickerState extends State<BlaLocationPicker> {
             location.name.toLowerCase().contains(searchQuery.toLowerCase()))
         .toList();
 
-    return Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: searchController,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                prefixIcon: IconButton(
-                  icon: Icon(Icons.arrow_back, color: BlaColors.iconNormal),
-                  onPressed: () => Navigator.pop(context),
-                ),
-                suffixIcon: searchQuery.isNotEmpty
-                    ? IconButton(
-                        icon: Icon(Icons.clear, color: BlaColors.iconNormal),
-                        onPressed: () {
-                          setState(() {
-                            searchQuery = "";
-                            searchController.clear();
-                          });
-                        },
-                      )
-                    : null,
-                hintText: "Search location...",
-              
-              ),
-              onChanged: (value) {
-                setState(() {
-                  searchQuery = value;
-                });
-              },
-            ),
-          ),
-          Expanded(
-            child: ListView.separated(
-              itemCount: filteredLocations.length,
-              separatorBuilder: (context, index) => BlaDivider(),
-              itemBuilder: (context, index) {
-                final location = filteredLocations[index];
-                return ListTile(
-                  leading: Icon(Icons.history, color: BlaColors.primary),
-                  title: Text(location.name),
-                  subtitle: Text(location.country.name),
-                  trailing: IconButton(
-                    icon: Icon(Icons.arrow_forward, color: BlaColors.iconNormal),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+    return Scaffold(
+      body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: searchController,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  prefixIcon: IconButton(
+                    icon: Icon(Icons.arrow_back, color: BlaColors.iconNormal),
+                    onPressed: () => Navigator.pop(context),
                   ),
-                  onTap: (){},
-                );
-              }
-            )
-          ),
-        ],
-      );  
+                  suffixIcon: searchQuery.isNotEmpty
+                      ? IconButton(
+                          icon: Icon(Icons.clear, color: BlaColors.iconNormal),
+                          onPressed: () {
+                            setState(() {
+                              searchQuery = "";
+                              searchController.clear();
+                            });
+                          },
+                        )
+                      : null,
+                  hintText: "Search location...",
+                
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    searchQuery = value;
+                  });
+                },
+              ),
+            ),
+            Expanded(
+              child: ListView.separated(
+                itemCount: filteredLocations.length,
+                separatorBuilder: (context, index) => BlaDivider(),
+                itemBuilder: (context, index) {
+                  final location = filteredLocations[index];
+                  return ListTile(
+                    leading: Icon(Icons.history, color: BlaColors.primary),
+                    title: Text(location.name),
+                    subtitle: Text(location.country.name),
+                    trailing: IconButton(
+                      icon: Icon(Icons.arrow_forward, color: BlaColors.iconNormal),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    onTap: (){},
+                  );
+                }
+              )
+            ),
+          ],
+        ),
+    );  
   }
 }

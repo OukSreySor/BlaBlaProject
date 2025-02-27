@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
       //home: Scaffold(body: RidePrefScreen()),
       //home: AvailableRides()
       //home: TestButtonScreen()
-      //home: Scaffold(body: RidePrefForm())
-      home: Scaffold(body: BlaLocationPicker(locations: fakeLocations)),
+      home: Scaffold(body: RidePrefForm())
+      //home: Scaffold(body: BlaLocationPicker(locations: fakeLocations)),
     );
   }
 }
