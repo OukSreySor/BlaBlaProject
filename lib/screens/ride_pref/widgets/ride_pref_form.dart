@@ -7,7 +7,7 @@ import 'package:week_3_blabla_project/widgets/actions/bla_button.dart';
 import 'package:week_3_blabla_project/widgets/display/bla_divider.dart';
 import 'package:week_3_blabla_project/screens/ride_pref/widgets/rides_pref_input_tile.dart';
 import 'package:week_3_blabla_project/widgets/inputs/bla_location_picker.dart';
-import 'package:week_3_blabla_project/widgets/inputs/bla_rides_tile.dart';
+import 'package:week_3_blabla_project/screens/rides/widgets/rides_tile.dart';
  
 import '../../../model/ride/locations.dart';
 import '../../../model/ride_pref/ride_pref.dart';

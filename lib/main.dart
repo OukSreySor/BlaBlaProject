@@ -22,10 +22,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: appTheme,
-      //home: Scaffold(body: RidePrefScreen()),
+      home: Scaffold(body: RidePrefScreen()),
       //home: AvailableRides()
       //home: TestButtonScreen()
-      home: Scaffold(body: RidePrefForm())
+      //home: Scaffold(body: RidePrefForm())
       //home: Scaffold(body: BlaLocationPicker(locations: initRidePref)),
     );
   }
