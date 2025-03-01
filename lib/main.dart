@@ -5,13 +5,16 @@ import 'package:week_3_blabla_project/screens/ride_pref/ride_pref_screen.dart';
 import 'package:week_3_blabla_project/screens/ride_pref/widgets/ride_pref_form.dart';
 import 'package:week_3_blabla_project/screens/test/test_button_screen.dart';
 import 'package:week_3_blabla_project/widgets/inputs/bla_location_picker.dart';
+import 'model/ride/locations.dart';
+import 'model/ride_pref/ride_pref.dart';
 import 'theme/theme.dart';
 
 void main() {
   runApp(const MyApp());
 }
-
+//Location? initRidePref;
 class MyApp extends StatelessWidget {
+  
   const MyApp({super.key});
 
   @override
@@ -23,44 +26,8 @@ class MyApp extends StatelessWidget {
       //home: AvailableRides()
       //home: TestButtonScreen()
       home: Scaffold(body: RidePrefForm())
-      //home: Scaffold(body: BlaLocationPicker(locations: fakeLocations)),
+      //home: Scaffold(body: BlaLocationPicker(locations: initRidePref)),
     );
   }
 }
 
-class AvailableRides extends StatelessWidget {
-  const AvailableRides({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    // Filter fakeRides for today
-    List<Ride> todayRides = fakeRides.where((ride) {
-      // Check if the ride is for today (departure date is today)
-      return ride.departureDate.year == DateTime.now().year &&
-             ride.departureDate.month == DateTime.now().month &&
-             ride.departureDate.day == DateTime.now().day;
-    }).toList();
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Available Rides Today'),
-      ),
-      body: todayRides.isEmpty
-          ? Center(child: Text('No rides available today'))
-          : ListView.builder(
-              itemCount: todayRides.length,
-              itemBuilder: (context, index) {
-                Ride ride = todayRides[index];
-                return Card(
-                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                  child: ListTile(
-                    title: Text('Departure from: ${ride.departureLocation.name} \nTo: ${ride.arrivalLocation.name}'),
-                    subtitle: Text('Driver: ${ride.driver.firstName} ${ride.driver.lastName}'),
-                    trailing: Text('${ride.pricePerSeat}€ per seat'),
-                  ),
-                );
-              },
-            ),
-    );
-  }
-}

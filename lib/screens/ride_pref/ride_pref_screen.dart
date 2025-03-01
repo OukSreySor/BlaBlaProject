@@ -66,7 +66,6 @@ class _RidePrefScreenState extends State<RidePrefScreen> {
 
 
 
-
                   // 2.2 Optionally display a list of past preferences
                   SizedBox(
                     height: 200, // Set a fixed height
